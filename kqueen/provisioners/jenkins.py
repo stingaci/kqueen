@@ -1,4 +1,5 @@
 from werkzeug.contrib.cache import SimpleCache
+from base import Provisioner
 
 import jenkins
 import logging
@@ -9,7 +10,7 @@ logger = logging.getLogger(__name__)
 cache = SimpleCache()
 
 
-class JenkinsProvisioner():
+class JenkinsProvisioner(Provisioner):
     def __init__(self, *args, **kwargs):
         # configuration
         self.jenkins_url = kwargs.get('jenkins_url', 'https://ci.mcp.mirantis.net')
@@ -23,7 +24,7 @@ class JenkinsProvisioner():
     def get_job(self):
         return self.server.get_job_info(self.job_name)
 
-    def list(self):
+    def list_clusters(self):
         job = self.get_job()
 
         clusters = {}
