@@ -1,5 +1,6 @@
 from flask import Flask
 from kqueen.blueprints.api import api
+from kqueen.blueprints.oba_api import oba_api
 from kqueen.blueprints.user_views import user_views
 
 import logging
@@ -12,6 +13,7 @@ def create_app():
     app = Flask(__name__, static_folder='./asset/static')
     app.register_blueprint(user_views)
     app.register_blueprint(api, url_prefix='/api/v1')
+    app.register_blueprint(oba_api)
 
     # DEMO LOGIN
     app.config.update(dict(

@@ -4,6 +4,7 @@ python-etcd
 python-jenkins
 pyyaml
 requests
+git+https://github.com/atengler/openbrokerapi.git@fix-syntax-error
 
 # dev
 coveralls
